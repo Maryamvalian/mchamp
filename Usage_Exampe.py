@@ -27,6 +27,11 @@ for itno in range(1000):
     gidx=np.abs(gammas)>eps
     active_set=active_set[gidx]
     gammas=gammas[gidx]
+    #if pruned any source:
+    if n_active>len(active_set):
+        n_active=active_set.size
+        G=G[:,gidx]  #drop columns (sources) from Leadfiled
+
 
 
 
