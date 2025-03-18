@@ -4,7 +4,7 @@ M = np.array([
     [1.0, 4.0, 2.0, 3.2],
     [3.1, 123.0, 1.3, 0.3]
 ])
-#lead filed 2 sensor * 3 source
+#Lead filed 2 sensor * 3 source
 G = np.array([
     [1.0, 4.0, 2.0],
     [3.1, 1.0, 1.3]
