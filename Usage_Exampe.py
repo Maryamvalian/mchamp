@@ -15,6 +15,12 @@ M/=np.sqrt(NC)
 NC=np.linalg.norm(G,ord=np.inf)
 G/=NC
 eps = np.finfo(float).eps
+#Initialize
+n_sensor, n_source=G.shape
+n_active=n_source
+active_set=np.arange(n_source) #all indices of sorts initially all active
+gammas = np.ones(G.shape[1], dtype=np.float64)
 
 print("normalized observed \n",M,'\n')
 print("normalized leadfiled\n",G)
+print("\n Active set=",active_set,",  Gammas=",gammas)
