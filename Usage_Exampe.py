@@ -9,6 +9,7 @@ G = np.array([
     [1.0, 4.0, 2.0],
     [3.1, 1.0, 1.3]
 ])
+#Normalize data
 NC=np.linalg.norm(np.dot(M,M.T),ord="fro") #Frobenius Norm
 M/=np.sqrt(NC)
 NC=np.linalg.norm(G,ord=np.inf)
