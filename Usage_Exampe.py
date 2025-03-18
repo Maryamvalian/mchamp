@@ -20,7 +20,18 @@ n_sensor, n_source=G.shape
 n_active=n_source
 active_set=np.arange(n_source) #all indices of sorts initially all active
 gammas = np.ones(G.shape[1], dtype=np.float64)
+#gammas[1]=0.001
+#ammas[2]=1e-17
+#_________________iteration
+for itno in range(1000):
+    gidx=np.abs(gammas)>eps
+    active_set=active_set[gidx]
+    gammas=gammas[gidx]
+
+
+
 
 print("normalized observed \n",M,'\n')
 print("normalized leadfiled\n",G)
 print("\n Active set=",active_set,",  Gammas=",gammas)
+print(gidx)
