@@ -1,4 +1,5 @@
 import numpy as np
+from fixes import _safe_svd
 #Example M : 2 Sensor, 4 time points
 M = np.array([
     [1.0, 4.0, 2.0, 3.2],
@@ -9,6 +10,7 @@ G = np.array([
     [1.0, 4.0, 2.0],
     [3.1, 1.0, 1.3]
 ])
+alpha=0.5
 #Normalize data
 NC=np.linalg.norm(np.dot(M,M.T),ord="fro") #Frobenius Norm
 M/=np.sqrt(NC)
@@ -33,7 +35,9 @@ for itno in range(1000):
         G=G[:,gidx]  #drop columns (sources) from Leadfiled
 
     CM=np.dot(G*gammas[np.newaxis,:],G.T)
-    R=G*gammas[np.newaxis,:]
+    CM.flat[::n_sensor+1]+=alpha
+    #SVM : U: singular vectors, S: singular values
+    U, S, _ = _safe_svd(CM, full_matrices=False)
 
 
 
@@ -45,3 +49,4 @@ print("normalized observed \n",M,'\n')
 print("normalized leadfiled\n",G)
 print("\n Active set=",active_set,",  Gammas=",gammas)
 print(f"CM=",CM)
+print(f"U=",U,"S=",S)
