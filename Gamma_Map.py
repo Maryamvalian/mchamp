@@ -96,7 +96,7 @@ def _gamma_map_opt(
             return x
 
     last_size = -1
-    for itno in range(maxit):
+    for itno in range(maxit):                      #optimzation loop
         gammas[np.isnan(gammas)] = 0.0
 
         gidx = np.abs(gammas) > eps

@@ -32,11 +32,16 @@ for itno in range(1000):
         n_active=active_set.size
         G=G[:,gidx]  #drop columns (sources) from Leadfiled
 
+    CM=np.dot(G*gammas[np.newaxis,:],G.T)
+    R=G*gammas[np.newaxis,:]
 
 
 
 
+
+#gammas[0]=0
+#R=G*gammas[np.newaxis,:]
 print("normalized observed \n",M,'\n')
 print("normalized leadfiled\n",G)
 print("\n Active set=",active_set,",  Gammas=",gammas)
-print(gidx)
+print(f"CM=",CM)
