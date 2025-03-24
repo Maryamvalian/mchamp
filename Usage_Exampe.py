@@ -38,7 +38,9 @@ for itno in range(1000):
     CM.flat[::n_sensor+1]+=alpha
     #SVM : U: singular vectors, S: singular values
     U, S, _ = _safe_svd(CM, full_matrices=False)
-
+    S = S[np.newaxis, :]
+    inv = np.dot(U / (S + eps), U.T)
+    comp_inv=np.linalg.pinv(CM)  #instead of doing SVM with _safe_svd this library to the same to compute pseudo inverse
 
 
 
@@ -49,4 +51,5 @@ print("normalized observed \n",M,'\n')
 print("normalized leadfiled\n",G)
 print("\n Active set=",active_set,",  Gammas=",gammas)
 print(f"CM=",CM)
-print(f"U=",U,"S=",S)
+print(f"left singular vecors=",U,"singular values=",S)
+print(f"inverseCM=",inv,"inverse from np",comp_inv)
