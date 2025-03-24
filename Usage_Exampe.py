@@ -41,6 +41,8 @@ for itno in range(1000):
     S = S[np.newaxis, :]
     inv = np.dot(U / (S + eps), U.T)
     comp_inv=np.linalg.pinv(CM)  #instead of doing SVM with _safe_svd this library to the same to compute pseudo inverse
+    mor_inv=np.linalg.inv(CM) #Need to be n*n matrix -same result as psuedo-inverse for n*n othewise raise error
+
 
 
 
@@ -52,4 +54,4 @@ print("normalized leadfiled\n",G)
 print("\n Active set=",active_set,",  Gammas=",gammas)
 print(f"CM=",CM)
 print(f"left singular vecors=",U,"singular values=",S)
-print(f"inverseCM=",inv,"inverse from np",comp_inv)
+print(f"inverseCM=",inv,"inverse from np",mor_inv)
