@@ -121,7 +121,10 @@ def _gamma_map_opt(
         if update_mode == 1:
             # MacKay fixed point update (10) in [1]
             numer = gammas**2 * np.mean((A * A.conj()).real, axis=1)
+            #mean across each source over all time points (axis 1)
             denom = gammas * np.sum(G * CMinvG, axis=0)
+            #sums the values across all sensors for each source (along axis=0).
+            # aggregates the effect of the interactions across the sensors and gives the total contribution for each source.
         elif update_mode == 2:
             # modified MacKay fixed point update (11) in [1]
             numer = gammas * np.sqrt(np.mean((A * A.conj()).real, axis=1))
