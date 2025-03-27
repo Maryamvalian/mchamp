@@ -47,8 +47,7 @@ for itno in range(1000):
 
 
 
-#gammas[0]=0
-#R=G*gammas[np.newaxis,:]
+
 print("normalized observed \n",M,'\n')
 print("normalized leadfiled\n",G)
 print("\n Active set=",active_set,",  Gammas=",gammas)
