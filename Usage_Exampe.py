@@ -23,7 +23,7 @@ n_active=n_source
 active_set=np.arange(n_source) #all indices of sorts initially all active
 gammas = np.ones(G.shape[1], dtype=np.float64)
 #gammas[1]=0.001
-#ammas[2]=1e-17
+#ammas[2]=1e-17                #less than eps.
 #_________________iteration
 for itno in range(1000):
     gidx=np.abs(gammas)>eps
