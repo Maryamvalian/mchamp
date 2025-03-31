@@ -280,7 +280,7 @@ def gamma_map(
     # run the optimization
     X, active_set = _gamma_map_opt(
         M,
-        gain,
+        gain,                             #Forward_operator
         alpha,
         maxit=maxit,
         tol=tol,
