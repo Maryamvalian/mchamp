@@ -37,3 +37,24 @@ else:
         gammas_comb = numer_comb / denom_fun(denom_comb)
 
     gammas = np.repeat(gammas_comb / group_size, group_size)
+    # compute convergence criterion
+    gammas_full = np.zeros(n_sources, dtype=np.float64)
+    gammas_full[active_set] = gammas
+
+    err = np.sum(np.abs(gammas_full - gammas_full_old)) / np.sum(
+        np.abs(gammas_full_old)
+    )
+
+    gammas_full_old = gammas_full
+
+    breaking = err < tol or n_active == 0
+    if len(gammas) != last_size or breaking:
+        logger.info(
+            f"Iteration: {itno}\t active set size: {len(gammas)}\t convergence: "
+            f"{err:.3e}"
+        )
+        last_size = len(gammas)
+
+    if breaking:
+        break
+
