@@ -44,7 +44,7 @@ ica.plot_sources(raw, show_scrollbars=False)
 # In[3]:
 
 
-#remove artifacts
+#remove artifacts ( Eye Blink and Heartbeat)
 ica.exclude = [0,1]
 ica.apply(raw)
 #ica.plot_sources(raw, show_scrollbars=False)  #To see the artifact is removed
