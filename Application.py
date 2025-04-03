@@ -32,7 +32,7 @@ raw = mne.io.read_raw_fif(sample_data_raw_file, preload=True)
 # In[2]:
 
 
-raw.filter(1.0, 40.0, fir_design='firwin', skip_by_annotation='edge')
+raw.filter(1.0, 40.0)      #FIR
 #
 ica = mne.preprocessing.ICA(n_components=15, max_iter="auto", random_state=1)
 ica.fit(raw)
@@ -44,13 +44,13 @@ ica.plot_sources(raw, show_scrollbars=False)
 # In[3]:
 
 
-#remove artifacts ( Eye Blink and Heartbeat)
+#remove artifacts
 ica.exclude = [0,1]
 ica.apply(raw)
 #ica.plot_sources(raw, show_scrollbars=False)  #To see the artifact is removed
 
 
-# # Events and Evoked 
+# # Events and Evoked
 
 # In[4]:
 
@@ -84,6 +84,7 @@ fig = v_r.plot_joint(picks='mag', title='Right Visual')
 
 
 # # Source localization
+# ## Auditory/Left
 
 # In[6]:
 
@@ -163,7 +164,7 @@ p6 = stc.plot(
 
 # # Source localization for visual stimilus
 
-# In[14]:
+# In[10]:
 
 
 #Call Gamma Map function
@@ -180,7 +181,7 @@ v_dipoles, v_residual = gamma_map(
 )
 
 
-# In[15]:
+# In[11]:
 
 
 #plot
