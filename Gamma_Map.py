@@ -60,11 +60,11 @@ def _gamma_map_opt(
     active_set : array, shape=(n_active,)
         Indices of active sources.
     """
-    G = G.copy()                 #LeadFileld Matrix nsensor ,n_source
-    M = M.copy()                 #Sensor data
+    G = G.copy()
+    M = M.copy()
 
     if gammas is None:
-        gammas = np.ones(G.shape[1], dtype=np.float64)        #initialization:all sources active
+        gammas = np.ones(G.shape[1], dtype=np.float64)
 
     eps = np.finfo(float).eps
 
