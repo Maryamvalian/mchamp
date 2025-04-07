@@ -116,7 +116,7 @@ def _gamma_map_opt(
         del CM
         CMinv = np.dot(U / (S + eps), U.T)              #inverse matrix of CM
         CMinvG = np.dot(CMinv, G)
-        A = np.dot(CMinvG.T, M)  # mult. w. Diag(gamma) in gamma update
+        A = np.dot(CMinvG.T, M)
 
         if update_mode == 1:
             # MacKay fixed point update (10) in [1]
