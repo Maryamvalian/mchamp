@@ -111,10 +111,10 @@ def _gamma_map_opt(
         CM = np.dot(G * gammas[np.newaxis, :], G.T)
         CM.flat[:: n_sensors + 1] += alpha
         # Invert CM keeping symmetry
-        U, S, _ = _safe_svd(CM, full_matrices=False)
+        U, S, _ = _safe_svd(CM, full_matrices=False)    #U:left singular vector, S: singulr values
         S = S[np.newaxis, :]
         del CM
-        CMinv = np.dot(U / (S + eps), U.T)
+        CMinv = np.dot(U / (S + eps), U.T)              #inverse matrix of CM
         CMinvG = np.dot(CMinv, G)
         A = np.dot(CMinvG.T, M)  # mult. w. Diag(gamma) in gamma update
 
