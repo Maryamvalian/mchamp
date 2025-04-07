@@ -35,6 +35,7 @@ for itno in range(1000):
         G=G[:,gidx]  #drop columns (sources) from Leadfiled
 
     CM=np.dot(G*gammas[np.newaxis,:],G.T)
+    #adds the regularization parameter alpha to each diagonal element of CM
     CM.flat[::n_sensor+1]+=alpha
     #SVM : U: singular vectors, S: singular values
     U, S, _ = _safe_svd(CM, full_matrices=False)
