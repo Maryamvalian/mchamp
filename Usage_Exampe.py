@@ -32,7 +32,7 @@ for itno in range(1000):
     #if pruned any source:
     if n_active>len(active_set):
         n_active=active_set.size
-        G=G[:,gidx]  #drop columns (sources) from Leadfiled
+        G=G[:,gidx]  #drop columns (sources) from Leadfield matrix
 
     CM=np.dot(G*gammas[np.newaxis,:],G.T)
     #adds the regularization parameter alpha to each diagonal element of CM
