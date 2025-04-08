@@ -30,12 +30,6 @@ if group_size == 1:
         gammas = numer / np.maximum(denom_fun(denom), np.finfo("float").eps)
 else:
     numer_comb = np.sum(numer.reshape(-1, group_size), axis=1)
-    if denom is None:
-        gammas_comb = numer_comb
-    else:
-        denom_comb = np.sum(denom.reshape(-1, group_size), axis=1)
-        gammas_comb = numer_comb / denom_fun(denom_comb)
-
     gammas = np.repeat(gammas_comb / group_size, group_size)
     # compute convergence criterion
     gammas_full = np.zeros(n_sources, dtype=np.float64)
@@ -44,6 +38,7 @@ else:
     err = np.sum(np.abs(gammas_full - gammas_full_old)) / np.sum(
         np.abs(gammas_full_old)
     )
+    M_estimate = gain[:, active_set] @ X
 
     gammas_full_old = gammas_full
     # get the data
