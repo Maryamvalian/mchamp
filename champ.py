@@ -41,11 +41,11 @@ else:
     M_estimate = gain[:, active_set] @ X
 
     gammas_full_old = gammas_full
-    # get the data
+
     sel = [evoked.ch_names.index(name) for name in gain_info["ch_names"]]
     M = evoked.data[sel]
 
-    # whiten the data
+
     logger.info("Whitening data matrix.")
     M = np.dot(whitener, M)
     breaking = err < tol or n_active == 0
