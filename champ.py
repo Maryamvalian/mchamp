@@ -59,3 +59,8 @@ else:
     if breaking:
         break
 
+    if return_residual:
+        out = out, residual
+
+    return out
+
