@@ -46,8 +46,7 @@ else:
     M = evoked.data[sel]
 
 
-    logger.info("Whitening data matrix.")
-    M = np.dot(whitener, M)
+
     breaking = err < tol or n_active == 0
     if len(gammas) != last_size or breaking:
         logger.info(
