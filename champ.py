@@ -54,6 +54,9 @@ else:
             f"{err:.3e}"
         )
         last_size = len(gammas)
+
+        gammas_full = np.zeros(n_sources, dtype=np.float64)
+        gammas_full_old = gammas_full
         # compute convergence criterion
         gammas_full = np.zeros(n_sources, dtype=np.float64)
         err = np.sum(np.abs(gammas_full - gammas_full_old)) / np.sum(
