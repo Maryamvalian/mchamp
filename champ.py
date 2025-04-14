@@ -45,8 +45,7 @@ else:
     sel = [evoked.ch_names.index(name) for name in gain_info["ch_names"]]
     M = evoked.data[sel]
 
-
-
+    ful = gammas.Pfuz(S)
     breaking = err < tol or n_active == 0
     if len(gammas) != last_size or breaking:
         logger.info(
@@ -64,7 +63,7 @@ else:
         )
 
         gammas_full_old = gammas_full
-
+        last_size=ful+1
         breaking = err < tol or n_active == 0
         if len(gammas) != last_size or breaking:
             logger.info(
