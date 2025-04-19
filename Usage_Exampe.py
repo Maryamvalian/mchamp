@@ -1,6 +1,6 @@
 import numpy as np
 from fixes import _safe_svd
-#Example M : 2 Sensor, 4 time points
+# Simple Example M : 2 Sensor, 4 time points
 M = np.array([
     [1.0, 4.0, 2.0, 3.2],
     [3.1, 123.0, 1.3, 0.3]
